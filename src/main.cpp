@@ -30,39 +30,31 @@ void setup() {
   setupScreen();
   commitToScreenBuffer();
   pushToScreen();
-
-  delay(100000);
 }
 
 void pulseClock(){
   digitalWrite(16,HIGH);
-  delay(1);
+  delayMicroseconds(10);
   digitalWrite(16,LOW);
 }
 
 void loop() {
-  Serial.println("pattern1");
+  u_int16_t hold = canvas[12];
+  for(int j = 11; j>0; j--){
+    canvas[j] = canvas[j-1];
+  }
+  canvas[0]=hold;
+  //canvas[7] = 0b0000000000000000,
+  //canvas[8] = 0b0000000011111100,
+  //canvas[9] = 0b0000001000000001,
+  commitToScreenBuffer();
+  pushToScreen();
   delay(500);
-  digitalWrite(21,HIGH);
-  pulseClock();
-  pulseClock();
-  pulseClock();
-  pulseClock();
-  digitalWrite(21,LOW);
-  pulseClock();
-  pulseClock();
-  pulseClock();
-  pulseClock();
-  Serial.println("pattern2");
-  delay(500);
-  digitalWrite(21,LOW);
-  pulseClock();
-  pulseClock();
-  pulseClock();
-  pulseClock();
-  digitalWrite(21,HIGH);
-  pulseClock();
-  pulseClock();
-  pulseClock();
-  pulseClock();
+  /*
+  canvas[7] = 0b0000000001111000,
+  canvas[8] = 0b0000000010000100,
+  canvas[9] = 0b0000001001111001,
+  commitToScreenBuffer();
+  pushToScreen();
+  delay(500);*/
 }

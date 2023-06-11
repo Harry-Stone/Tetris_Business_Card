@@ -58,21 +58,21 @@ void commitToScreenBuffer(){
 void pulseClock1(){
     Serial.println("CLK1");
     digitalWrite(16,HIGH);
-    delay(100);
+    delayMicroseconds(5);
     digitalWrite(16,LOW);
 }
 
 void pulseClock2(){
     Serial.println("CLK2");
     digitalWrite(17,HIGH);
-    delay(100);
+    delayMicroseconds(5);
     digitalWrite(17,LOW);
 }
 
 void pulseClock3(){
     Serial.println("CLK3");
     digitalWrite(18,HIGH);
-    delay(100);
+    delayMicroseconds(5);
     digitalWrite(18,LOW);
 }
 
