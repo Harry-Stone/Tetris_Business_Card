@@ -3,7 +3,7 @@
 u_int8_t score = 0;
 int comx = 3;
 int comy = 0;
-
+int curTet = 6;
 u_int16_t gameState[13] = 
 {
     0b0000000000000000,
@@ -92,6 +92,7 @@ void testPositionDown(u_int16_t tet[4], int posx, int posy){
     Serial.println(gameState[posy+1]);
     Serial.println(tet[3]<<posx);
     Serial.println(gameState[posy+1]&(tet[3]<<posx)!=0);
+    //There is a bug where only the bottom row is tested for collisions
     if ((gameState[posy+1]&(tet[3]<<posx))==0){ //can move down 
         Serial.println("Moving down");
         comy+=1;//Move down
@@ -103,7 +104,9 @@ void testPositionDown(u_int16_t tet[4], int posx, int posy){
         } else { //place the block
             Serial.println("Placing block");
             comy = 0;
-            comx = 4; //reset command positions to spawn
+            //comx = 4; //reset command positions to spawn
+            comx = random(8);
+            curTet = random(1,6);
             gameState[posy-3] = gameState[posy-3] | (tet[0]<<posx);
             gameState[posy-2] = gameState[posy-2] | (tet[1]<<posx);
             gameState[posy-1] = gameState[posy-1] | (tet[2]<<posx);

@@ -3,6 +3,8 @@
 #include "game.hpp"
 #include <Arduino.h>
 void setup() {
+  pinMode(0, INPUT);
+  randomSeed(analogRead(0));
 
   Serial.begin(115200);
   Serial.println("Starting test");
@@ -43,8 +45,29 @@ void loop() {
   Serial.print(comx);
   Serial.print("   ");
   Serial.println(comy);
-  testPositionDown(tet6,comx,comy);
+  switch (curTet)
+  {
+  case 1:
+    testPositionDown(tet1,comx,comy);
+    break;
+  case 2:
+    testPositionDown(tet2,comx,comy);
+    break;
+  case 3:
+    testPositionDown(tet3,comx,comy);
+    break;
+  case 4:
+    testPositionDown(tet4,comx,comy);
+    break;
+  case 5:
+    testPositionDown(tet5,comx,comy);
+    break;
+  default:
+    testPositionDown(tet6,comx,comy);
+    break;
+  }
+  //testPositionDown(tet2,comx,comy);
   commitToScreenBuffer();
   pushToScreen();
-  delay(500);
+  delay(300);
 }
