@@ -1,6 +1,6 @@
 //#include "ledMatix.hpp"
 #include "music.hpp"
-#include "ledMatrix.hpp"
+#include "game.hpp"
 #include <Arduino.h>
 void setup() {
 
@@ -39,22 +39,12 @@ void pulseClock(){
 }
 
 void loop() {
-  u_int16_t hold = canvas[12];
-  for(int j = 11; j>0; j--){
-    canvas[j] = canvas[j-1];
-  }
-  canvas[0]=hold;
-  //canvas[7] = 0b0000000000000000,
-  //canvas[8] = 0b0000000011111100,
-  //canvas[9] = 0b0000001000000001,
+  Serial.print("Loop: ");
+  Serial.print(comx);
+  Serial.print("   ");
+  Serial.println(comy);
+  testPositionDown(tet6,comx,comy);
   commitToScreenBuffer();
   pushToScreen();
   delay(500);
-  /*
-  canvas[7] = 0b0000000001111000,
-  canvas[8] = 0b0000000010000100,
-  canvas[9] = 0b0000001001111001,
-  commitToScreenBuffer();
-  pushToScreen();
-  delay(500);*/
 }

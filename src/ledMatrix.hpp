@@ -20,7 +20,7 @@ u_int8_t shiftBuffer[15] = {
 0b01000100
 };
 
-u_int16_t canvas[12] = 
+u_int16_t canvas[13] = 
 {
     0b0000000011111100,
     0b0000001111111111,
@@ -33,7 +33,8 @@ u_int16_t canvas[12] =
     0b0000000011111100,
     0b0000001000000001,
     0b0000001100000011,
-    0b0000001111001111
+    0b0000001111001111,
+    0b0000001111111111
 };
 
 void commitToScreenBuffer(){
@@ -56,21 +57,21 @@ void commitToScreenBuffer(){
 
 
 void pulseClock1(){
-    Serial.println("CLK1");
+    //Serial.println("CLK1");
     digitalWrite(16,HIGH);
     delayMicroseconds(5);
     digitalWrite(16,LOW);
 }
 
 void pulseClock2(){
-    Serial.println("CLK2");
+    //Serial.println("CLK2");
     digitalWrite(17,HIGH);
     delayMicroseconds(5);
     digitalWrite(17,LOW);
 }
 
 void pulseClock3(){
-    Serial.println("CLK3");
+    //Serial.println("CLK3");
     digitalWrite(18,HIGH);
     delayMicroseconds(5);
     digitalWrite(18,LOW);
